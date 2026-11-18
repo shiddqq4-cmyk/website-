@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect with Friends</title>
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  margin: 0;
+  background: #f0f2f5;
+  color: #1c1e21;
+}
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 65px;
+  padding: 25px;
+  flex-wrap: wrap;
+}
+.brand {
+  max-width: 420px;
+}
+.brand h1 {
+  font-size: 55px;
+  color: #1877f2;
+  margin: 0 0 10px;
+}
+.brand p {
+  font-size: 23px;
+  line-height: 1.4;
+}
+.card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #0002;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 7px 0;
+  border: 1px solid #dddfe2;
+  border-radius: 7px;
+  font-size: 16px;
+}
+input:focus {
+  outline: 1px solid #1877f2;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 7px;
+  background: #1877f2;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button:hover {
+  background: #166fe5;
+}
+#account {
+  display: none;
+  text-align: center;
+}
+#account h2 {
+  color: #1877f2;
+}
+#logout {
+  background: #555;
+}
+.error {
+  color: #d93025;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<main>
+  <section class="brand">
+    <h1>facebook</h1>
+    <p>Connect with friends and the world around you.</p>
+  </section>
+
+  <section class="card">
+    <form id="login">
+      <input
+        type="text"
+        placeholder="Email address or phone number"
+        autocomplete="username"
+        required
+      >
+
+      <input
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="submit">Log In</button>
+      <p class="error" id="error"></p>
+    </form>
+
+    <section id="account">
+      <h2>Welcome!</h2>
+      <p>You are signed in.</p>
+      <button id="logout">Log Out</button>
+    </section>
+  </section>
+</main>
+
+<script>
+const login = document.getElementById("login");
+const account = document.getElementById("account");
+
+login.addEventListener("submit", event => {
+  event.preventDefault();
+
+  document.getElementById("error").textContent =
+    "Connect an authorized authentication provider to sign in.";
+});
+
+document.getElementById("logout").addEventListener("click", () => {
+  account.style.display = "none";
+  login.style.display = "block";
+  login.reset();
+});
+</script>
+
+</body>
+</html>
